@@ -3,249 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment - AbiiBanido99</title>
+    <title>Payment Gateway - RIIWWXZ OFFICIAL</title>
     <style>
+        /* Reset dan Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             padding: 20px;
-            background-image: url('https://files.catbox.moe/kzr6tb.jpg');
+            background-image: url('https://files.catbox.moe/atvn7g.jpg');
             background-size: cover;
             background-position: center;
-            background-blend-mode: overlay;
+            background-attachment: fixed;
         }
-
-        .container {
-            max-width: 500px;
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+            height: 100%;
+            background: rgba(26, 26, 46, 0.85);
+            z-index: -1;
         }
-
-        .header {
-            background: linear-gradient(to right, #2193b0, #6dd5ed);
-            color: white;
-            padding: 25px 20px;
+        
+        /* Header Styles */
+        header {
             text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 800px;
         }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-            font-weight: 600;
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(106, 17, 203, 0.3);
         }
-
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .payment-info {
-            padding: 25px;
-        }
-
-        .payment-method {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b8b8d1;
             margin-bottom: 20px;
-            border-left: 4px solid #2193b0;
         }
-
-        .payment-method h2 {
-            color: #2193b0;
-            font-size: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .payment-method h2 i {
-            margin-right: 10px;
-        }
-
-        .payment-details {
+        
+        /* Container Styles */
+        .container {
+            width: 100%;
+            max-width: 800px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 20px;
         }
-
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed #e0e0e0;
+        
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .detail-item:last-child {
-            border-bottom: none;
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
-
-        .label {
-            font-weight: 600;
-            color: #555;
-        }
-
-        .value {
-            font-weight: 500;
-            color: #2193b0;
-        }
-
-        .copy-btn {
-            background: #2193b0;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-            margin-top: 5px;
-        }
-
-        .copy-btn:hover {
-            background: #1a7a94;
-            transform: translateY(-2px);
-        }
-
-        .instructions {
-            background: #e8f4f8;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-            border-left: 4px solid #4CAF50;
-        }
-
-        .instructions h3 {
-            color: #4CAF50;
-            margin-bottom: 15px;
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
-
-        .instructions ol {
-            padding-left: 20px;
+        
+        .card-title i {
+            font-size: 1.8rem;
         }
-
-        .instructions li {
+        
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .payment-method {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .method-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 10px;
-            color: #555;
         }
-
-        .channel-menu {
-            margin-top: 25px;
+        
+        .method-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .dana { background: linear-gradient(135deg, #1184cb, #0d6ba8); }
+        .ovo { background: linear-gradient(135deg, #4c2a86, #3a1f68); }
+        .gopay { background: linear-gradient(135deg, #00aae7, #0089c4); }
+        .seabank { background: linear-gradient(135deg, #1e3a8a, #172554); }
+        
+        .method-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .method-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .method-number {
+            font-family: monospace;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .method-na {
+            font-size: 0.9rem;
+            color: #b8b8d1;
+        }
+        
+        /* QRIS Section */
+        .qris-section {
             text-align: center;
         }
-
-        .channel-btn {
+        
+        .qris-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .qris-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+        
+        .contact-btn {
             display: inline-block;
-            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
             color: white;
             text-decoration: none;
-            padding: 12px 25px;
+            padding: 12px 30px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
         }
-
-        .channel-btn:hover {
+        
+        .contact-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
         }
-
-        .footer {
+        
+        /* Footer */
+        footer {
+            margin-top: 40px;
             text-align: center;
+            color: #b8b8d1;
+            font-size: 0.9rem;
+            width: 100%;
             padding: 20px;
-            color: #777;
-            font-size: 14px;
-            border-top: 1px solid #e0e0e0;
-            background: #f8f9fa;
         }
-
-        @media (max-width: 480px) {
-            .container {
-                border-radius: 15px;
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .payment-methods {
+                grid-template-columns: 1fr;
             }
             
-            .header h1 {
-                font-size: 24px;
+            .logo {
+                font-size: 2rem;
             }
             
-            .payment-info {
-                padding: 20px 15px;
+            .card-title {
+                font-size: 1.3rem;
             }
         }
+        
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
+    <div class="overlay"></div>
+    
+    <header>
+        <h1 class="logo">RIIWWXZ STORE</h1>
+        <p class="subtitle">Pembayaran Mudah dan Aman</p>
+    </header>
+    
     <div class="container">
-        <div class="header">
-            <h1>Payment - AbiiBanido99</h1>
-            <p>Lakukan pembayaran dengan mudah dan aman</p>
-        </div>
-        
-        <div class="payment-info">
-            <div class="payment-method">
-                <h2>💳 Pembayaran via DANA</h2>
-                <div class="payment-details">
-                    <div class="detail-item">
-                        <span class="label">Nomor DANA:</span>
-                        <span class="value">089510168678</span>
+        <!-- Metode Pembayaran -->
+        <div class="card">
+            <h2 class="card-title">Metode Pembayaran</h2>
+            <div class="payment-methods">
+                <!-- DANA -->
+                <div class="payment-method">
+                    <div class="method-header">
+                        <div class="method-icon dana">D</div>
+                        <div class="method-name">DANA</div>
                     </div>
-                    <div class="detail-item">
-                        <span class="label">Atas Nama:</span>
-                        <span class="value">YUANITA</span>
+                    <div class="method-details">
+                        <div class="method-number">
+                            <span>083897762065</span>
+                            <button class="copy-btn" onclick="copyToClipboard('083897762065')">Salin</button>
+                        </div>
+                        <div class="method-na">N/A: DORI SAMSUL HUDORI</div>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('089510168678')">Salin Nomor</button>
+                </div>
+                
+                <!-- OVO -->
+                <div class="payment-method">
+                    <div class="method-header">
+                        <div class="method-icon ovo">O</div>
+                        <div class="method-name">OVO</div>
+                    </div>
+                    <div class="method-details">
+                        <div class="method-number">
+                            <span>083841201044</span>
+                            <button class="copy-btn" onclick="copyToClipboard('083841201044')">Salin</button>
+                        </div>
+                        <div class="method-na">N/A: RIIWWXZ STORE</div>
+                    </div>
+                </div>
+                
+                <!-- GOPAY -->
+                <div class="payment-method">
+                    <div class="method-header">
+                        <div class="method-icon gopay">G</div>
+                        <div class="method-name">GOPAY</div>
+                    </div>
+                    <div class="method-details">
+                        <div class="method-number">
+                            <span>082128399932</span>
+                            <button class="copy-btn" onclick="copyToClipboard('082128399932')">Salin</button>
+                        </div>
+                        <div class="method-na">N/A: DORI SAMSUL HUDORI</div>
+                    </div>
+                </div>
+                
+                <!-- SEABANK -->
+                <div class="payment-method">
+                    <div class="method-header">
+                        <div class="method-icon seabank">S</div>
+                        <div class="method-name">SEABANK</div>
+                    </div>
+                    <div class="method-details">
+                        <div class="method-number">
+                            <span>901068812599</span>
+                            <button class="copy-btn" onclick="copyToClipboard('901068812599')">Salin</button>
+                        </div>
+                        <div class="method-na">N/A: DORI SAMSUL HUDORI</div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="instructions">
-                <h3>📝 Cara Pembayaran</h3>
-                <ol>
-                    <li>Buka aplikasi DANA di smartphone Anda</li>
-                    <li>Pilih menu "Kirim" atau "Transfer"</li>
-                    <li>Masukkan nomor DANA yang tertera di atas</li>
-                    <li>Masukkan jumlah yang ingin ditransfer</li>
-                    <li>Konfirmasi pembayaran dan simpan buktinya</li>
-                </ol>
-            </div>
-            
-            <div class="channel-menu">
-                <a href="https://t.me/murbandfreeabii" class="channel-btn" target="_blank">
-                    📞 Hubungi Saluran Telegram
-                </a>
-            </div>
         </div>
         
-        <div class="footer">
-            <p>&copy; 2023 Payment Gateway By : Riiwwxz Developer. Semua hak dilindungi.</p>
+        <!-- QRIS -->
+        <div class="card qris-section">
+            <h2 class="card-title">QRIS All Payment</h2>
+            <p>Scan QR Code berikut untuk pembayaran melalui berbagai metode</p>
+            <img src="https://img1.pixhost.to/images/8945/644003106_zion.jpg" alt="QRIS Payment" class="qris-image">
+        </div>
+        
+        <!-- Saluran Bantuan -->
+        <div class="card contact-section">
+            <h2 class="card-title">Butuh Bantuan?</h2>
+            <p>Hubungi kami melalui saluran berikut untuk konfirmasi pembayaran atau bantuan lainnya</p>
+            <a href="https://t.me/Riiwwzx_Reall" class="contact-btn" target="_blank">Telegram Support</a>
         </div>
     </div>
+    
+    <footer>
+        <p>&copy; 2023 RIIWWXZ STORE. All rights reserved.</p>
+    </footer>
 
     <script>
+        // Fungsi untuk menyalin teks ke clipboard
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
-                alert('Nomor DANA berhasil disalin: ' + text);
+                // Tampilkan pesan sukses
+                alert('Nomor berhasil disalin: ' + text);
             }, function(err) {
-                console.error('Gagal menyalin teks: ', err);
+                // Fallback untuk browser lama
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    alert('Nomor berhasil disalin: ' + text);
+                } catch (err) {
+                    alert('Gagal menyalin nomor: ' + err);
+                }
+                document.body.removeChild(textArea);
             });
         }
     </script>
 </body>
-</html>
+                            </html>
