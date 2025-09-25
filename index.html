@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - AbiiBanido99</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: url('https://files.catbox.moe/kzr6tb.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(to right, #2193b0, #6dd5ed);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .payment-info {
+            padding: 25px;
+        }
+
+        .payment-method {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2193b0;
+        }
+
+        .payment-method h2 {
+            color: #2193b0;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-method h2 i {
+            margin-right: 10px;
+        }
+
+        .payment-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .value {
+            font-weight: 500;
+            color: #2193b0;
+        }
+
+        .copy-btn {
+            background: #2193b0;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 5px;
+        }
+
+        .copy-btn:hover {
+            background: #1a7a94;
+            transform: translateY(-2px);
+        }
+
+        .instructions {
+            background: #e8f4f8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .instructions h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .channel-menu {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .channel-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .channel-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #e0e0e0;
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .payment-info {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Payment Gateway</h1>
+            <p>Lakukan pembayaran dengan mudah dan aman</p>
+        </div>
+        
+        <div class="payment-info">
+            <div class="payment-method">
+                <h2>💳 Pembayaran via DANA</h2>
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <span class="label">Nomor DANA:</span>
+                        <span class="value">089510168678</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Atas Nama:</span>
+                        <span class="value">YUANITA</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('089510168678')">Salin Nomor</button>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>📝 Cara Pembayaran</h3>
+                <ol>
+                    <li>Buka aplikasi DANA di smartphone Anda</li>
+                    <li>Pilih menu "Kirim" atau "Transfer"</li>
+                    <li>Masukkan nomor DANA yang tertera di atas</li>
+                    <li>Masukkan jumlah yang ingin ditransfer</li>
+                    <li>Konfirmasi pembayaran dan simpan buktinya</li>
+                </ol>
+            </div>
+            
+            <div class="channel-menu">
+                <a href="https://t.me/murbandfreeabii" class="channel-btn" target="_blank">
+                    📞 Hubungi Saluran Telegram
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2023 Payment Gateway By : Riiwwxz Developer. Semua hak dilindungi.</p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Nomor DANA berhasil disalin: ' + text);
+            }, function(err) {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
